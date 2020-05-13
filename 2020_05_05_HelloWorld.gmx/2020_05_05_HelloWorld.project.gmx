@@ -10,6 +10,7 @@
   <paths name="paths"/>
   <fonts name="fonts">
     <font>fonts\fnt_title</font>
+    <font>fonts\font1</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_hello_world</object>

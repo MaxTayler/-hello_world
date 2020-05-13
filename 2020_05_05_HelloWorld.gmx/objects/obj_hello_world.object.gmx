@@ -31,6 +31,57 @@ X = room_width*0.5;
 Y = room_height*0.5;
 text = "Hello World!!!";
 
+
+time_set = 30*3;
+time = 30*6;
+
+error_message = 0;
+error_text = "hello hass left the world has left press R to reset";
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+if time == 0
+{ 
+    
+    X = X + round(random_range(-32,32));
+    Y = Y + round(random_range(-32,32));
+    time  = time_set;
+    
+    
+} 
+else
+{time -= 1;} 
+
+if X &lt; -50 or Y &lt; -50 or X &gt; 850 or Y &gt; 850 
+{
+error_message = 1;
+}
+if keyboard_check_pressed(ord("R"))
+{room_restart(); }
+
+// loop runs it's self 
 </string>
           </argument>
         </arguments>
@@ -57,6 +108,18 @@ text = "Hello World!!!";
 draw_set_halign(fa_center);
 draw_set_colour(c_lime);
 draw_text(X,Y,"Hello World!!!");
+
+    draw_set_font(font1);
+    draw_set_halign(fa_left);
+ draw_text(16,16,"X = " + string(X) );   
+ draw_text(16,32,"Y = " + string(Y) );   
+    
+if error_message == 1
+{
+
+    draw_text(room_width/2,room_height/2,error_text);
+
+}
 </string>
           </argument>
         </arguments>
